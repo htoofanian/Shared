@@ -131,7 +131,8 @@
   .difficulty-btn:active { transform: scale(0.9); }
   
   /* Difficulty Picker Grid Adjusted for Tighter Vertical Spacing */
-  .difficulty-picker { position: fixed; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 10px; display: grid; grid-template-columns: repeat(4, 44px); grid-auto-rows: 44px; row-gap: 4px; column-gap: 10px; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+
+.difficulty-picker { position: fixed; background: #ffffff; border: 1px solid var(--border); border-radius: 16px; padding: 10px; display: grid; grid-template-columns: repeat(4, 44px); grid-template-rows: repeat(3, 44px); align-content: start; row-gap: 4px; column-gap: 10px; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,0.25); height: fit-content; }
   
   .diff-option { width: 44px; height: 44px; border-radius: 12px; border: none; font-size: 30px; cursor: pointer; background: transparent; display: flex; align-items: center; justify-content: center; transition: all 0.1s; line-height: 1; }
   .diff-option.checkmark { color: #22c55e; font-size: 18px; flex-direction: column; gap: 2px; font-variant-emoji: text; }
@@ -232,14 +233,14 @@
   <div class="header-top">
     <div>
       <h1 id="appTitle">Workout Log</h1>
-      <div class="routine-dropdown" id="routineDropdown">
+      <div class="routine-dropdown" id="routineDropdown" style="">
         <button class="routine-btn" id="routineBtn" onclick="toggleRoutineDropdown(event)">PUSH/PULL</button>
         <div class="routine-options" id="routineOptions">
       <div class="routine-option selected" data-routine="pushpull" onclick="selectRoutine('pushpull')">PUSH/PULL</div>
           <div class="routine-option" data-routine="armleg" onclick="selectRoutine('armleg')">ARM/LEGS</div>
         </div>
       </div>
-      <div class="subtitle" id="routineLabel" style="display:none;">PUSH/PULL</div>
+      <div class="subtitle" id="routineLabel" style="display: none;">PUSH/PULL</div>
     </div>
     <div class="header-btns">
       <button class="btn btn-gray" id="editBtn" onclick="toggleEdit()">Edit</button>
@@ -250,43 +251,79 @@
   </div>
   <div class="edit-heading" id="editHeading">EDIT ROUTINE</div>
   <div class="edit-note" id="editNote" style="display: none;">▼ = Group with next exercise</div>
-  <div class="version-info" id="versionInfo">v1.1 · Apr 2026</div>
+  <div class="version-info" id="versionInfo">v1.1111 · Apr 22, 2026</div>
 </header>
 
 <div id="app"><div class="day-block"><div class="day-header">
         <span class="day-name">Monday</span>
         <span class="day-sub">PULL · Culver</span>
-        <span class="day-progress"><span>0</span>/7</span>
-      </div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%"></div></div><div class="exercise-list"><div class="exercise-group"><div class="exercise-item">
-                  <div class="checkbox-zone" onclick="toggleDone(0,0)">
+        <span class="day-progress"><span>0</span>/8</span>
+      </div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%"></div></div><div class="exercise-list"><div class="exercise-item">
+              <div class="checkbox-zone" onclick="toggleDone(0,0)">
+                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
+              </div>
+              <div class="exercise-name">Lateral Pull Down</div>
+              <div class="diff-zone" onclick="togglePicker('0_0',event)">
+                <div class="exercise-weight">70</div>
+                <div style="position:relative;display:inline-flex;">
+                  <button class="difficulty-btn" style="">⬤</button>
+                  
+                </div>
+              </div>
+            </div><div class="exercise-item">
+              <div class="checkbox-zone" onclick="toggleDone(0,1)">
+                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
+              </div>
+              <div class="exercise-name">Front Rotate Pulldown</div>
+              <div class="diff-zone" onclick="togglePicker('0_1',event)">
+                <div class="exercise-weight">35</div>
+                <div style="position:relative;display:inline-flex;">
+                  <button class="difficulty-btn" style="">⬤</button>
+                  
+                </div>
+              </div>
+            </div><div class="exercise-item">
+              <div class="checkbox-zone" onclick="toggleDone(0,2)">
+                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
+              </div>
+              <div class="exercise-name">Hammer Curl Dumbbell</div>
+              <div class="diff-zone" onclick="togglePicker('0_2',event)">
+                <div class="exercise-weight">12.5</div>
+                <div style="position:relative;display:inline-flex;">
+                  <button class="difficulty-btn" style="">⬤</button>
+                  
+                </div>
+              </div>
+            </div><div class="exercise-group"><div class="exercise-item">
+                  <div class="checkbox-zone" onclick="toggleDone(0,3)">
                     <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
                   </div>
-                  <div class="exercise-name">Lateral Pull Down</div>
-                  <div class="diff-zone" onclick="togglePicker('0_0',event)">
-                    <div class="exercise-weight">70</div>
+                  <div class="exercise-name">Mid Row Cable</div>
+                  <div class="diff-zone" onclick="togglePicker('0_3',event)">
+                    <div class="exercise-weight">32.5 · 7th</div>
                     <div style="position:relative;display:inline-flex;">
                       <button class="difficulty-btn" style="">⬤</button>
                       
                     </div>
                   </div>
                 </div><div class="exercise-item">
-                  <div class="checkbox-zone" onclick="toggleDone(0,1)">
+                  <div class="checkbox-zone" onclick="toggleDone(0,4)">
                     <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
                   </div>
-                  <div class="exercise-name">Front Rotate Pulldown</div>
-                  <div class="diff-zone" onclick="togglePicker('0_1',event)">
-                    <div class="exercise-weight">35</div>
+                  <div class="exercise-name">Mid Row Machine</div>
+                  <div class="diff-zone" onclick="togglePicker('0_4',event)">
+                    <div class="exercise-weight">50</div>
                     <div style="position:relative;display:inline-flex;">
                       <button class="difficulty-btn" style="">⬤</button>
                       
                     </div>
                   </div>
                 </div></div><div class="exercise-group"><div class="exercise-item">
-                  <div class="checkbox-zone" onclick="toggleDone(0,2)">
+                  <div class="checkbox-zone" onclick="toggleDone(0,5)">
                     <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
                   </div>
                   <div class="exercise-name">Biceps Curl Machine</div>
-                  <div class="diff-zone" onclick="togglePicker('0_2',event)">
+                  <div class="diff-zone" onclick="togglePicker('0_5',event)">
                     <div class="exercise-weight">20</div>
                     <div style="position:relative;display:inline-flex;">
                       <button class="difficulty-btn" style="">⬤</button>
@@ -294,11 +331,11 @@
                     </div>
                   </div>
                 </div><div class="exercise-item">
-                  <div class="checkbox-zone" onclick="toggleDone(0,3)">
+                  <div class="checkbox-zone" onclick="toggleDone(0,6)">
                     <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
                   </div>
                   <div class="exercise-name">Biceps Curl Dumbbell</div>
-                  <div class="diff-zone" onclick="togglePicker('0_3',event)">
+                  <div class="diff-zone" onclick="togglePicker('0_6',event)">
                     <div class="exercise-weight">12.5</div>
                     <div style="position:relative;display:inline-flex;">
                       <button class="difficulty-btn" style="">⬤</button>
@@ -306,48 +343,12 @@
                     </div>
                   </div>
                 </div></div><div class="exercise-item">
-              <div class="checkbox-zone" onclick="toggleDone(0,4)">
-                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
-              </div>
-              <div class="exercise-name">Hammer Curl Dumbbell</div>
-              <div class="diff-zone" onclick="togglePicker('0_4',event)">
-                <div class="exercise-weight">12.5</div>
-                <div style="position:relative;display:inline-flex;">
-                  <button class="difficulty-btn" style="">⬤</button>
-                  
-                </div>
-              </div>
-            </div><div class="exercise-item">
-              <div class="checkbox-zone" onclick="toggleDone(0,5)">
-                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
-              </div>
-              <div class="exercise-name">Mid Row Cable</div>
-              <div class="diff-zone" onclick="togglePicker('0_5',event)">
-                <div class="exercise-weight">32.5 · 7th</div>
-                <div style="position:relative;display:inline-flex;">
-                  <button class="difficulty-btn" style="">⬤</button>
-                  
-                </div>
-              </div>
-            </div><div class="exercise-item">
-              <div class="checkbox-zone" onclick="toggleDone(0,6)">
-                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
-              </div>
-              <div class="exercise-name">Rope Climb (if free)</div>
-              <div class="diff-zone" onclick="togglePicker('0_6',event)">
-                <div class="exercise-weight">x50</div>
-                <div style="position:relative;display:inline-flex;">
-                  <button class="difficulty-btn" style="">⬤</button>
-                  
-                </div>
-              </div>
-            </div><div class="exercise-item">
               <div class="checkbox-zone" onclick="toggleDone(0,7)">
                 <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
               </div>
-              <div class="exercise-name">Reverse Bench Crunch</div>
+              <div class="exercise-name">Rope Climb (if free)</div>
               <div class="diff-zone" onclick="togglePicker('0_7',event)">
-                <div class="exercise-weight">BW 3x12</div>
+                <div class="exercise-weight">x50</div>
                 <div style="position:relative;display:inline-flex;">
                   <button class="difficulty-btn" style="">⬤</button>
                   
@@ -357,9 +358,21 @@
               <div class="checkbox-zone" onclick="toggleDone(0,8)">
                 <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
               </div>
-              <div class="exercise-name">Ab Crunch</div>
+              <div class="exercise-name">Reverse Bench Crunch</div>
               <div class="diff-zone" onclick="togglePicker('0_8',event)">
-                <div class="exercise-weight">3x15 · 40</div>
+                <div class="exercise-weight">BW 3x12</div>
+                <div style="position:relative;display:inline-flex;">
+                  <button class="difficulty-btn" style="">⬤</button>
+                  
+                </div>
+              </div>
+            </div><div class="exercise-item">
+              <div class="checkbox-zone" onclick="toggleDone(0,9)">
+                <div class="checkbox"><svg class="checkmark" viewBox="0 0 10 7"><path d="M1 3.5L3.5 6L9 1"></path></svg></div>
+              </div>
+              <div class="exercise-name">Ab Crunch</div>
+              <div class="diff-zone" onclick="togglePicker('0_9',event)">
+                <div class="exercise-weight">50</div>
                 <div style="position:relative;display:inline-flex;">
                   <button class="difficulty-btn" style="">⬤</button>
                   
@@ -715,12 +728,25 @@ const DEFAULT_DAYS_PUSHPULL = [
       {
         "name": "Lateral Pull Down",
         "detail": "70",
+        "groupWithNext": false
+      },
+      {
+        "name": "Front Rotate Pulldown",
+        "detail": "35"
+      },
+      {
+        "name": "Hammer Curl Dumbbell",
+        "detail": "12.5"
+      },
+      {
+        "name": "Mid Row Cable",
+        "detail": "32.5 · 7th",
         "groupWithNext": true,
         "group": "group_1"
       },
       {
-        "name": "Front Rotate Pulldown",
-        "detail": "35",
+        "name": "Mid Row Machine",
+        "detail": "50",
         "group": "group_1"
       },
       {
@@ -735,14 +761,6 @@ const DEFAULT_DAYS_PUSHPULL = [
         "group": "group_2"
       },
       {
-        "name": "Hammer Curl Dumbbell",
-        "detail": "12.5"
-      },
-      {
-        "name": "Mid Row Cable",
-        "detail": "32.5 · 7th"
-      },
-      {
         "name": "Rope Climb (if free)",
         "detail": "x50"
       },
@@ -752,7 +770,7 @@ const DEFAULT_DAYS_PUSHPULL = [
       },
       {
         "name": "Ab Crunch",
-        "detail": "3x15 · 40"
+        "detail": "50"
       }
     ]
   },
@@ -778,7 +796,7 @@ const DEFAULT_DAYS_PUSHPULL = [
       },
       {
         "name": "Leg Curl",
-        "detail": "C65 \u00b7 M70"
+        "detail": "C65 · M70"
       },
       {
         "name": "Hip Abduction (OUT)",
@@ -794,9 +812,10 @@ const DEFAULT_DAYS_PUSHPULL = [
       },
       {
         "name": "Ab Crunch",
-        "detail": "3x15 \u00b7 40"
+        "detail": "3x15 · 40"
       }
-    ]
+    ],
+    "hidden": false
   },
   {
     "day": "Thursday",
@@ -923,7 +942,7 @@ const DEFAULT_DAYS_ARMLEG = [
       },
       {
         "name": "Chest Press",
-        "detail": "C65 \u00b7 M60",
+        "detail": "C65 · M60",
         "groupWithNext": true,
         "group": "group_1"
       },
@@ -945,7 +964,7 @@ const DEFAULT_DAYS_ARMLEG = [
       },
       {
         "name": "Shoulder Press",
-        "detail": "C30 \u00b7 M25",
+        "detail": "C30 · M25",
         "groupWithNext": true,
         "group": "group_3"
       },
@@ -956,13 +975,13 @@ const DEFAULT_DAYS_ARMLEG = [
       },
       {
         "name": "Row Cable",
-        "detail": "35 \u00b7 7th",
+        "detail": "35 · 7th",
         "groupWithNext": true,
         "group": "group_4"
       },
       {
         "name": "Row Machine",
-        "detail": "C60 \u00b7 M50",
+        "detail": "C60 · M50",
         "group": "group_4"
       },
       {
@@ -1019,7 +1038,7 @@ const DEFAULT_DAYS_ARMLEG = [
       },
       {
         "name": "Leg Curls",
-        "detail": "C65 \u00b7 M70"
+        "detail": "C65 · M70"
       },
       {
         "name": "Leg Press",
@@ -1039,7 +1058,7 @@ const DEFAULT_DAYS_ARMLEG = [
       },
       {
         "name": "Ab Crunch",
-        "detail": "3x15 \u00b7 40"
+        "detail": "3x15 · 40"
       }
     ]
   },
@@ -1147,10 +1166,10 @@ const DEFAULT_DAYS_ARMLEG = [
 ];
 
 
-const DIFFICULTIES = ["🔴","🟠","🟡","🟢","✔","✔✔","✔✔✔","","⬤","🔺","🔻"];
+const DIFFICULTIES = ["🔴","🟠","🟡","🟢","✔","✔✔","✔✔✔","","⬤","🔺","🔻",""];
 // APP METADATA — title, version number, save date, and the two routine dropdown labels.
 // All of these are editable in the app via Edit mode and are saved with "Save to Downloads".
-const DEFAULT_META = {"title":"Workout Log","subtitle":"Push / Pull","version":"1.1","savedDate":"Apr 2026","label_pushpull":"PUSH/PULL","label_armleg":"ARM/LEGS"};
+const DEFAULT_META = {"title":"Workout Log","subtitle":"Push / Pull","version":"1.1111","savedDate":"Apr 22, 2026","label_pushpull":"PUSH/PULL","label_armleg":"ARM/LEGS"};
 
 // STORAGE KEYS — labels used to save data in the browser. Each routine has its own keys
 // so switching routines never overwrites the other's data. To force a full reset to defaults
